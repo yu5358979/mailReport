@@ -9,22 +9,22 @@
 import xml.etree.ElementTree as Et
 
 
-class XmlParser:
+class XmlParser(object):
 
     def __init__(self, xml_file):
 
-        self.report = []
-        self.root = Et.parse(xml_file).getroot()
+        self._report = []
+        self._root = Et.parse(xml_file).getroot()
 
-        for node in self.root:
+        for node in self._root:
             if node.tag == "mail-to":
-                self.mail_to = node.text.strip()
+                self._mail_to = node.text.strip()
 
             elif node.tag == "subject":
-                self.subject = node.text.strip()
+                self._subject = node.text.strip()
 
             elif node.tag == "mail-cc":
-                self.mail_cc = node.text.strip()
+                self._mail_cc = node.text.strip()
 
             elif node.tag == "report":
                 res = {}
@@ -35,19 +35,19 @@ class XmlParser:
                         res["sql"] = sub_node.text.strip()
                     if sub_node.tag == "text":
                         res["text"] = sub_node.text.strip()
-                self.report.append(res)
+                self._report.append(res)
 
     def get_mail_to(self):
-        return self.mail_to
+        return self._mail_to
 
     def get_mail_cc(self):
-        return self.mail_cc
+        return self._mail_cc
 
     def get_subject(self):
-        return self.subject
+        return self._subject
 
     def get_report(self):
-        return self.report
+        return self._report
 
 
 if __name__ == '__main__':
@@ -59,3 +59,5 @@ if __name__ == '__main__':
     print(aaa.get_mail_cc() + '\n')
     print(aaa.get_subject() + '\n')
     print(aaa.get_report())
+
+    aaa.get_mail_cc
