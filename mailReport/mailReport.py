@@ -10,6 +10,9 @@ Func:自动发送邮件的
 
 import sys
 
+impoort
+MysqlSource
+from XmlParser import
 
 def helping():
     help_str = "mailReport.py xxx.xml\n"

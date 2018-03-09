@@ -50,14 +50,4 @@ class MysqlSource(object):
         self._conn.close()
 
 
-if __name__ == "__main__":
-    aaa = MysqlSource("10.37.15.18", "bi_ys", "ak3c3dsi349zdk", db="daojia_dwh", port=3306)
-    for i in aaa.select("select id,imei from daojia_dwh.t_fact_order limit 100"):
-        print(i)
-    print('\n' * 4)
 
-    print(aaa.get_desc())
-    for i in aaa.select("select * from information_schema.VIEWS limit 100"):
-        print(i)
-
-    print(aaa.get_desc())
